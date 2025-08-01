@@ -141,13 +141,64 @@
   background-position: top;
 }
     .footer img {
-      height: 48px;
-      margin-right: 14px;
-      margin-top: 2px;
+      height: 100px;
+      color:#1C3B2A;
     }
     .footer-details {
       flex: 1;
     }
+    .logo-space {
+      border: transparent !important;
+      vertical-align: top;
+    }
+    .banorte-ticket {
+  border: 1px solid #1C3B2A;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 13px;
+  color: #222;
+  background: #fff;
+  max-width: 740px;
+  margin: 20px auto;
+}
+
+.banorte-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+}
+
+.banorte-table td {
+  border: 1px solid #bbb;
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+.asociacion {
+  text-align: left;
+  font-size: 13px;
+  color: #1C3B2A;
+  padding-left: 8px;
+}
+.banorte-title {
+  text-align: right;
+  font-size: 12px;
+  color: #1C3B2A;
+}
+.ref-title {
+  background: #8aa89955;
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #bbb;
+  border-bottom: none;
+  font-weight: bold;
+  color: #1C3B2A;
+}
+.nota {
+  font-size: 11px;
+  margin-top: 6px;
+  color: #444;
+}
+
     @media (max-width: 800px) {
       .container { padding: 10px; }
       .header, .footer { flex-direction: column; align-items: flex-start; }
@@ -166,15 +217,14 @@
     </div>
 <table width="100%" cellspacing="0" cellpadding="4" style="font-size:12px;">
   <tr>
-    <!-- Contacto 1 -->
+    <!-- Contacto izquierda -->
     <td class="header-contact2" style="width:50%;">
       Oficina Montemorelos<br>
       Antigua Carretera Nacional No.200<br>
       Fracc. Country Hill, Montemoremlos, N.L.<br>
       Tel. 826 269-8520<br>
     </td>
-
-    <!-- Contacto 2 -->
+    <!-- Contacto derecha -->
     <td class="header-contact1" style="width:50%;">
       Oficina Monterrey<br>
       Tel. 81 8401-9700
@@ -193,24 +243,23 @@
         NOMBRE DEL PROPIETARIO Y DIRECCIÓN DE ENVÍO
       </div>
       <div style="padding:10px; min-height:60px;">
-        {{NombreCliente}}<br>
-        {{DireccionEnvio}}
+        {NombreCliente}<br>
+        {DireccionEnvio}
       </div>
     </td>
-
     <!-- CONTRATO Y FECHA -->
     <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
       <div class="cell-header">
         CONTRATO
       </div>
       <div style="padding:10px; min-height:28px;">
-        {{NumeroContrato}}
+        {NumeroContrato}
       </div>
       <div class="cell-header">
         FECHA DE EMISIÓN DE ESTADO DE CUENTA
       </div>
       <div style="padding:10px; min-height:28px;">
-        {{FechaEmision}} -- TODO llave simple
+        {FechaEmision}
       </div>
     </td>
   </tr>
@@ -221,17 +270,16 @@
         DIRECCIÓN DEL LOTE(S) DE TERRENO
       </div>
       <div style="padding:10px; min-height:40px;">
-        {{DireccionLote}}
+        {DireccionLote}
       </div>
     </td>
-
     <!-- FECHA LÍMITE DE PAGO -->
     <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
       <div class="cell-header">
         FECHA LÍMITE DE PAGO PARA EVITAR INTERESES MORATORIOS
       </div>
       <div style="padding:10px; min-height:40px;">
-        {{FechaLimitePago}}
+        {FechaLimitePago}
       </div>
     </td>
   </tr>
@@ -247,7 +295,7 @@
         </tr>
       </thead>
       <tbody>
-        {{Movimientos}}
+        {Movimientos}
         <!-- Ejemplo de reemplazo:
         <tr>
           <td>01/07/2025</td>
@@ -259,30 +307,80 @@
       <tfoot>
         <tr>
           <td colspan="2" style="text-align:right;">SALDO TOTAL ADEUDADO</td>
-          <td>${{SaldoTotal}}</td>
+          <td>${SaldoTotal}</td>
         </tr>
-      </tfoot>      
+      </tfoot>
     </table>
     <div style="font-size: 11px;">
-        Favor de hacer su pago en nuestras oficinas o en cualquier sucursal del banco <b>BANORTE</b> utilizando la ficha anexa<br>
-        También podrá efectuar su pago con <b>Tarjeta de Crédito</b> en forma automática o <b>transferencia electrónica</b> 
-        (clabe 072 580 010664365030 de BANORTE cuenta 1066436503)<br>
-        También podrá efectuar su pago en <b>Seven Eleven, Farmacias del Ahorro y Farmacias Guadalajara</b> indicando que es un pago de servicio de BANORTE
-        con el número de <b><u>emisora 148374</u></b> y proporcionar el No. de Contrato y Nombre<br>
-        Si pasados 30 días de la fecha de corte no recibimos observación alguna, su saldo se considera correcto.<br>
-        <em>(Para cualquier duda, llame a nuestras oficinas).</em>
+      Favor de hacer su pago en nuestras oficinas o en cualquier sucursal del banco <b>BANORTE</b> utilizando la ficha anexa<br>
+      También podrá efectuar su pago con <b>Tarjeta de Crédito</b> en forma automática o <b>transferencia electrónica</b> 
+      (clabe 072 580 010664365030 de BANORTE cuenta 1066436503)<br>
+      También podrá efectuar su pago en <b>Seven Eleven, Farmacias del Ahorro y Farmacias Guadalajara</b> indicando que es un pago de servicio de BANORTE
+      con el número de <b><u>emisora 148374</u></b> y proporcionar el No. de Contrato y Nombre<br>
+      Si pasados 30 días de la fecha de corte no recibimos observación alguna, su saldo se considera correcto.<br>
+      <em>(Para cualquier duda, llame a nuestras oficinas).</em>
     </div>
+    <div style="text-align: right;">
+    <strong><br>PROPIETARIO</strong>
+  </div>
 
-    <!-- FOOTER / REFERENCIAS DE PAGO -->
+    <!-- FOOTER / REFERENCIA DE PAGO -->
     <div class="footer">
+    <div class="banorte-ticket">
+  <table class="banorte-table">
+  <!-- Fila encabezado -->
+  <tr>
+    <td colspan="4" class="asociacion logo-space">
+      <strong>ASOCIACIÓN DE COLONOS DE COUNTRY HILL A.C.</strong>
+    </td>
+    <td class="ref-title"><strong>FECHA</strong></td>
+    <td colspan="3">{FechaRecibo}</td>
+    <td rowspan="2" class="logo-space" style="vertical-align: top;">
+      <img style="height: 20px !important;" src="/logo_banorte.svg" alt="Logo Banorte">
+    </td>
+  </tr>
+
+  <!-- Fila vacía SOLO en el bloque izquierdo/central -->
+  <tr>
+    <td class="spacer logo-space"></td>
+  </tr>
+
+  <!-- Fila logo Country Hill + Empresa / Total -->
+  <tr>
+    <td colspan="4"class="logo-space">
       <img src="/logo.png" alt="Logo Inferior">
-      <div class="footer-details">
-        <strong>No. de Empresa (Emisora):</strong> {{NumeroEmisora}}<br>
-        <strong>No. de Contrato:</strong> {{NumeroContrato}}<br>
-        <strong>Total a Pagar:</strong> ${{SaldoTotal}}<br><br>
-        <em>Los documentos se reciben salvo buen cobro.</em>
-      </div>
+    </td>
+    <td class="ref-title" ><strong>No. DE EMPRESA (EMISORA)</strong></td>
+    <td rowspan="1"><strong>1488374</strong></td>
+    <td class="ref-title"><strong>TOTAL A PAGAR</strong></td>
+    <td colspan="2">${SaldoTotal}</td>
+  </tr>
+</table>
+
+
+  <div class="ref-title"><strong>REFERENCIAS</strong></div>
+  <table class="banorte-table">
+    <tr class="ref-title">
+      <td><strong>No. DE CONTRATO</strong></td>
+      <td><strong>NOMBRE DEL CLIENTE</strong></td>
+    </tr>
+    <tr>
+      <td>{NumeroContrato}</td>
+      <td>{NombreCliente}</td>
+    </tr>
+  </table>
+
+  <p class="nota">
+    Los documentos se reciben salvo buen cobro. También podrá efectuar su pago en Seven Eleven,
+    Farmacias del Ahorro y Farmacias Guadalajara.
+  </p>
+  
+</div>
+
     </div>
+    <div style="text-align: right;">
+    <strong><br>BANCO</strong>
+  </div>
   </div>
 </body>
 </html>
