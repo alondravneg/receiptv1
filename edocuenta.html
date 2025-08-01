@@ -1,101 +1,288 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Estado de Cuenta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #1C3B2A;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+    }
+    .container {
+      max-width: 740px;
+      margin: 30px auto;
+      background: #fff;
+      border: 1.5px solid #bbb;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 24px 32px 18px 32px;
+    }
+    .header {
+      display: flex;
+      justify-content: center;   /* centra el contenido */
+      align-items: center;
+      border-bottom: 2px solid #1C3B2A;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+      gap: 10px; /* separación entre logo y título */
+    }
+    .header img {
+      height: 100px;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+    .header-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1C3B2A;
+      display: flex;
+      align-items: center;
+    }
+    .header-contact1 {
+      text-align: right;
+      font-size: 13px;
+      color: #676767;
+    }
+    .header-contact2 {
+      text-align: left;
+      font-size: 13px;
+      color: #676767;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 18px 0 12px 0;
+      letter-spacing: 1px;
+      color: #1C3B2A;
+    }
+    .cell-header{
+      font-weight:bold; 
+      text-align:center; 
+      background: rgba(138,168,153,0.25);
+      border-bottom:1px solid #1C3B2A; 
+      padding:4px; 
+      font-size:12px;
+      color:#1C3B2A
+    }
+    .info-table, .mov-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 18px;
+    }
+    /* .info-table td {
+      border: 1px solid #bbb;
+      padding: 10px 8px;
+      vertical-align: top;
+      font-size: 13px;
+    } */
+    /* .info-table strong {
+      color: #1C3B2A;
+    } */
+    .mov-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 18px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  overflow: hidden; /* asegura que los bordes redondeados se respeten */
+}
+.mov-table th, 
+.mov-table td {
+  border: 1px solid #bbb;
+  padding: 7px 6px;
+  text-align: left;
+}
+.mov-table th {
+  background: rgba(138,168,153,0.25);
+  font-weight: bold;
+  text-align: center;
+  color: #1C3B2A;
+}
+/* Bordes redondeados superiores */
+.mov-table thead tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
+.mov-table thead tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+/* Bordes redondeados inferiores */
+.mov-table tfoot tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+  background: rgba(138,168,153,0.25);
+  color: #1C3B2A;
+}
+.mov-table tfoot tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+  background: rgba(138,168,153,0.25);
+  color: #1C3B2A;
+}
+    .footer {
+  font-size: 12px;
+  color: #444;
+  margin-top: 18px;
+  padding-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  background-image: repeating-linear-gradient(
+    to right,
+    #1C3B2A,
+    #1C3B2A 10px,
+    transparent 10px,
+    transparent 15px
+  );
+  background-repeat: repeat-x;
+  background-size: auto 1px;
+  background-position: top;
+}
+    .footer img {
+      height: 48px;
+      margin-right: 14px;
+      margin-top: 2px;
+    }
+    .footer-details {
+      flex: 1;
+    }
+    @media (max-width: 800px) {
+      .container { padding: 10px; }
+      .header, .footer { flex-direction: column; align-items: flex-start; }
+      .header-contact { text-align: left; margin-top: 8px; }
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; font-size:12px; color:#000; margin:0; padding:0;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:20px; background-color:#f8f8f8;">
-    <tr>
-      <td align="center">
-        <table width="700" cellpadding="6" cellspacing="0" style="background-color:#ffffff; border:1px solid #000;">
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-title">
+        <img src="/logo.png" alt="Logo Superior">
+        ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.
+      </div>      
+    </div>
+<table width="100%" cellspacing="0" cellpadding="4" style="font-size:12px;">
+  <tr>
+    <!-- Contacto 1 -->
+    <td class="header-contact2" style="width:50%;">
+      Oficina Montemorelos<br>
+      Antigua Carretera Nacional No.200<br>
+      Fracc. Country Hill, Montemoremlos, N.L.<br>
+      Tel. 826 269-8520<br>
+    </td>
 
-          <!-- ENCABEZADO -->
-          <tr>
-            <td colspan="2" style="text-align:left; font-size:16px; font-weight:bold;">
-              ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" style="text-align:center; font-size:14px; font-weight:bold; border-bottom:2px solid #000; padding:8px;">
-              ESTADO DE CUENTA
-            </td>
-          </tr>
+    <!-- Contacto 2 -->
+    <td class="header-contact1" style="width:50%;">
+      Oficina Monterrey<br>
+      Tel. 81 8401-9700
+    </td>
+  </tr>
+</table>
 
-          <!-- DATOS DEL CLIENTE -->
-          <tr>
-            <td style="border:1px solid #000; width:50%; vertical-align:top;">
-              <strong>NOMBRE DEL PROPIETARIO Y DIRECCIÓN DE ENVÍO</strong><br>
-              {{NombreCliente}}<br>
-              {{DireccionEnvio}}
-            </td>
-            <td style="border:1px solid #000; width:50%; vertical-align:top;">
-              <table width="100%" cellspacing="0" cellpadding="4">
-                <tr>
-                  <td><strong>CONTRATO:</strong></td>
-                  <td>{{NumeroContrato}}</td>
-                </tr>
-                <tr>
-                  <td><strong>FECHA DE EMISIÓN:</strong></td>
-                  <td>{{FechaEmision}}</td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+    <div class="section-title">ESTADO DE CUENTA</div>
 
-          <!-- LOTE Y FECHA LÍMITE -->
-          <tr>
-            <td style="border:1px solid #000;">
-              <strong>DIRECCIÓN DEL LOTE(S) DE TERRENO</strong><br>
-              {{DireccionLote}}
-            </td>
-            <td style="border:1px solid #000;">
-              <strong>FECHA LÍMITE DE PAGO:</strong><br>
-              {{FechaLimitePago}}
-            </td>
-          </tr>
+    <!-- DATOS DEL CLIENTE -->
+<table class="info-table" style="border-collapse: separate; border-spacing: 10px; width:100%;">
+  <tr>
+    <!-- NOMBRE Y DIRECCIÓN -->
+    <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
+      <div class="cell-header">
+        NOMBRE DEL PROPIETARIO Y DIRECCIÓN DE ENVÍO
+      </div>
+      <div style="padding:10px; min-height:60px;">
+        {{NombreCliente}}<br>
+        {{DireccionEnvio}}
+      </div>
+    </td>
 
-          <!-- TABLA DE MOVIMIENTOS -->
-          <tr>
-            <td colspan="2" style="padding:0;">
-              <table width="100%" cellspacing="0" cellpadding="6" style="border:1px solid #000; border-collapse:collapse; font-size:12px;">
-                <tr style="background-color:#e0e0e0; font-weight:bold; text-align:center;">
-                  <td style="border:1px solid #000;">FECHA</td>
-                  <td style="border:1px solid #000;">CONCEPTO</td>
-                  <td style="border:1px solid #000;">CARGO / CRÉDITO</td>
-                </tr>
-                <!-- Ejemplo dinámico de filas -->
-                {{Movimientos}}
-                <!-- Ejemplo de reemplazo:
-                <tr>
-                  <td style="border:1px solid #000;">01/07/2025</td>
-                  <td style="border:1px solid #000;">Mantenimiento mensual</td>
-                  <td style="border:1px solid #000; text-align:right;">$1,200.00</td>
-                </tr>
-                -->
-                <tr>
-                  <td colspan="2" style="text-align:right; border:1px solid #000; font-weight:bold;">SALDO TOTAL ADEUDADO</td>
-                  <td style="border:1px solid #000; text-align:right; font-weight:bold;">${{SaldoTotal}}</td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+    <!-- CONTRATO Y FECHA -->
+    <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
+      <div class="cell-header">
+        CONTRATO
+      </div>
+      <div style="padding:10px; min-height:28px;">
+        {{NumeroContrato}}
+      </div>
+      <div class="cell-header">
+        FECHA DE EMISIÓN DE ESTADO DE CUENTA
+      </div>
+      <div style="padding:10px; min-height:28px;">
+        {{FechaEmision}} -- TODO llave simple
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <!-- DIRECCIÓN LOTE -->
+    <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
+      <div class="cell-header">
+        DIRECCIÓN DEL LOTE(S) DE TERRENO
+      </div>
+      <div style="padding:10px; min-height:40px;">
+        {{DireccionLote}}
+      </div>
+    </td>
 
-          <!-- PIE DE PÁGINA / REFERENCIAS DE PAGO -->
-          <tr>
-            <td colspan="2" style="font-size:11px; padding:10px; text-align:justify;">
-              Favor de realizar su pago en oficinas o en cualquier sucursal BANORTE.<br>
-              Puede efectuar su pago con tarjeta de crédito, transferencia o en farmacias autorizadas.<br>
-              <strong>No. de Empresa (Emisora):</strong> {{NumeroEmisora}}<br>
-              <strong>No. de Contrato:</strong> {{NumeroContrato}}<br>
-              <strong>Total a Pagar:</strong> ${{SaldoTotal}}<br><br>
-              <em>Los documentos se reciben salvo buen cobro.</em>
-            </td>
-          </tr>
+    <!-- FECHA LÍMITE DE PAGO -->
+    <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
+      <div class="cell-header">
+        FECHA LÍMITE DE PAGO PARA EVITAR INTERESES MORATORIOS
+      </div>
+      <div style="padding:10px; min-height:40px;">
+        {{FechaLimitePago}}
+      </div>
+    </td>
+  </tr>
+</table>
 
-        </table>
-      </td>
-    </tr>
-  </table>
+    <!-- TABLA DE MOVIMIENTOS -->
+    <table class="mov-table">
+      <thead>
+        <tr>
+          <th>FECHA</th>
+          <th>CONCEPTO</th>
+          <th>CARGO / CRÉDITO</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{Movimientos}}
+        <!-- Ejemplo de reemplazo:
+        <tr>
+          <td>01/07/2025</td>
+          <td>Mantenimiento mensual</td>
+          <td>$1,200.00</td>
+        </tr>
+        -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2" style="text-align:right;">SALDO TOTAL ADEUDADO</td>
+          <td>${{SaldoTotal}}</td>
+        </tr>
+      </tfoot>      
+    </table>
+    <div style="font-size: 11px;">
+        Favor de hacer su pago en nuestras oficinas o en cualquier sucursal del banco <b>BANORTE</b> utilizando la ficha anexa<br>
+        También podrá efectuar su pago con <b>Tarjeta de Crédito</b> en forma automática o <b>transferencia electrónica</b> 
+        (clabe 072 580 010664365030 de BANORTE cuenta 1066436503)<br>
+        También podrá efectuar su pago en <b>Seven Eleven, Farmacias del Ahorro y Farmacias Guadalajara</b> indicando que es un pago de servicio de BANORTE
+        con el número de <b><u>emisora 148374</u></b> y proporcionar el No. de Contrato y Nombre<br>
+        Si pasados 30 días de la fecha de corte no recibimos observación alguna, su saldo se considera correcto.<br>
+        <em>(Para cualquier duda, llame a nuestras oficinas).</em>
+    </div>
+
+    <!-- FOOTER / REFERENCIAS DE PAGO -->
+    <div class="footer">
+      <img src="/logo.png" alt="Logo Inferior">
+      <div class="footer-details">
+        <strong>No. de Empresa (Emisora):</strong> {{NumeroEmisora}}<br>
+        <strong>No. de Contrato:</strong> {{NumeroContrato}}<br>
+        <strong>Total a Pagar:</strong> ${{SaldoTotal}}<br><br>
+        <em>Los documentos se reciben salvo buen cobro.</em>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
