@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Estado de Cuenta</title>
+</head>
+<body style="font-family: Arial, sans-serif; font-size:12px; color:#000; margin:0; padding:0;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:20px; background-color:#f8f8f8;">
+    <tr>
+      <td align="center">
+        <table width="700" cellpadding="6" cellspacing="0" style="background-color:#ffffff; border:1px solid #000;">
+
+          <!-- ENCABEZADO -->
+          <tr>
+            <td colspan="2" style="text-align:left; font-size:16px; font-weight:bold;">
+              ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align:center; font-size:14px; font-weight:bold; border-bottom:2px solid #000; padding:8px;">
+              ESTADO DE CUENTA
+            </td>
+          </tr>
+
+          <!-- DATOS DEL CLIENTE -->
+          <tr>
+            <td style="border:1px solid #000; width:50%; vertical-align:top;">
+              <strong>NOMBRE DEL PROPIETARIO Y DIRECCIÓN DE ENVÍO</strong><br>
+              {{NombreCliente}}<br>
+              {{DireccionEnvio}}
+            </td>
+            <td style="border:1px solid #000; width:50%; vertical-align:top;">
+              <table width="100%" cellspacing="0" cellpadding="4">
+                <tr>
+                  <td><strong>CONTRATO:</strong></td>
+                  <td>{{NumeroContrato}}</td>
+                </tr>
+                <tr>
+                  <td><strong>FECHA DE EMISIÓN:</strong></td>
+                  <td>{{FechaEmision}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- LOTE Y FECHA LÍMITE -->
+          <tr>
+            <td style="border:1px solid #000;">
+              <strong>DIRECCIÓN DEL LOTE(S) DE TERRENO</strong><br>
+              {{DireccionLote}}
+            </td>
+            <td style="border:1px solid #000;">
+              <strong>FECHA LÍMITE DE PAGO:</strong><br>
+              {{FechaLimitePago}}
+            </td>
+          </tr>
+
+          <!-- TABLA DE MOVIMIENTOS -->
+          <tr>
+            <td colspan="2" style="padding:0;">
+              <table width="100%" cellspacing="0" cellpadding="6" style="border:1px solid #000; border-collapse:collapse; font-size:12px;">
+                <tr style="background-color:#e0e0e0; font-weight:bold; text-align:center;">
+                  <td style="border:1px solid #000;">FECHA</td>
+                  <td style="border:1px solid #000;">CONCEPTO</td>
+                  <td style="border:1px solid #000;">CARGO / CRÉDITO</td>
+                </tr>
+                <!-- Ejemplo dinámico de filas -->
+                {{Movimientos}}
+                <!-- Ejemplo de reemplazo:
+                <tr>
+                  <td style="border:1px solid #000;">01/07/2025</td>
+                  <td style="border:1px solid #000;">Mantenimiento mensual</td>
+                  <td style="border:1px solid #000; text-align:right;">$1,200.00</td>
+                </tr>
+                -->
+                <tr>
+                  <td colspan="2" style="text-align:right; border:1px solid #000; font-weight:bold;">SALDO TOTAL ADEUDADO</td>
+                  <td style="border:1px solid #000; text-align:right; font-weight:bold;">${{SaldoTotal}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- PIE DE PÁGINA / REFERENCIAS DE PAGO -->
+          <tr>
+            <td colspan="2" style="font-size:11px; padding:10px; text-align:justify;">
+              Favor de realizar su pago en oficinas o en cualquier sucursal BANORTE.<br>
+              Puede efectuar su pago con tarjeta de crédito, transferencia o en farmacias autorizadas.<br>
+              <strong>No. de Empresa (Emisora):</strong> {{NumeroEmisora}}<br>
+              <strong>No. de Contrato:</strong> {{NumeroContrato}}<br>
+              <strong>Total a Pagar:</strong> ${{SaldoTotal}}<br><br>
+              <em>Los documentos se reciben salvo buen cobro.</em>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
