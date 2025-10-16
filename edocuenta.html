@@ -1,451 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Estado de Cuenta</title>
 
     <style>
-        strong {
-            color: #1C3B2A;
-        }
+      strong {
+        color: #30713e;
+      }
 
-        body {
+      body {
         font-family: Arial, sans-serif;
-        font-size: 13px;
-        color: #1C3B2A;
+        font-size: 11px;
+        color: #30713e;
         margin: 20px;
         padding: 0;
         width: 90vw;
         overflow-x: hidden;
-        }
+      }
 
-        .container {
-            width: 90vw;
-            padding: 20px;
-            margin: 0;
-        }
+      .container {
+        width: 90vw;
+        padding: 20px, 20px, 0, 20px;
+        margin: 0;
+      }
 
-        .header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 2px solid #1C3B2A;
-            padding-bottom: 10px;
-            margin-bottom: 18px;
-            gap: 10px;
-        }
+      .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px solid #30713e;
+        padding-bottom: 10px;
+        gap: 10px;
+      }
 
-        .header img {
-            height: 100px;
-            margin-right: 12px;
-            vertical-align: middle;
-        }
+      .header img {
+        height: 100px;
+        margin-right: 12px;
+        vertical-align: middle;
+      }
 
-        .header-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1C3B2A;
-            display: flex;
-            align-items: center;
-        }
+      .header-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #30713e;
+        display: flex;
+        align-items: center;
+      }
 
-        .header-contact1,
-        .header-contact2 {
-            font-size: 13px;
-            color: #676767;
-        }
+      .top-table {
+        border: 2px solid #30713e;
+        border-radius: 6px;
+        padding: 0;
+        vertical-align: top;
+      }
 
-        .header-contact1 {
-            text-align: right;
-        }
+      .header-contact1,
+      .header-contact2 {
+        font-size: 10px;
+        color: #676767;
+      }
 
-        .header-contact2 {
-            text-align: left;
-        }
+      .header-contact1 {
+        text-align: right;
+      }
 
-        .section-title {
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 18px 0 12px 0;
-            letter-spacing: 1px;
-            color: #1C3B2A;
-        }
+      .header-contact2 {
+        text-align: left;
+      }
 
-        .cell-header {
-            font-weight: bold;
-            text-align: center;
-            background: rgba(138, 168, 153, 0.25);
-            border-bottom: 1px solid #1C3B2A;
-            padding: 4px;
-            font-size: 12px;
-            color: #1C3B2A;
-        }
+      .section-title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0 0 0 0;
+        letter-spacing: 1px;
+        color: #30713e;
+      }
 
-        .info-table,
-        .mov-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 18px;
-        }
+      .cell-header {
+        font-weight: bold;
+        background: rgba(170, 232, 191);
+        border-bottom: 2px solid #30713e;
+        padding: 4px;
+        text-align: center;
+        font-size: 12px;
+        color: #30713e;
+      }
 
-        .mov-table {
-            border: 1px solid #bbb;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+      .info-table,
+      .mov-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 18px;
+      }
 
-        .mov-table th,
-        .mov-table td {
-            border: 1px solid #bbb;
-            padding: 7px 6px;
-            text-align: left;
-        }
+      .mov-table {
+        border: 2px solid #30713e;
+        border-radius: 8px;
+        overflow: hidden;
+      }
 
-        .mov-table th {
-            background: rgba(138, 168, 153, 0.25);
-            font-weight: bold;
-            text-align: center;
-            color: #1C3B2A;
-        }
+      .mov-table th,
+      .mov-table td {
+        border: 2px solid #30713e;
+        padding: 7px 6px;
+        text-align: left;
+      }
 
-        .mov-table thead tr:first-child th:first-child {
-            border-top-left-radius: 8px;
-        }
+      .mov-table th {
+        background: rgba(170, 232, 191);
+        font-weight: bold;
+        text-align: center;
+        color: #30713e;
+      }
 
-        .mov-table thead tr:first-child th:last-child {
-            border-top-right-radius: 8px;
-        }
+      .mov-table thead tr:first-child th:first-child {
+        border-top-left-radius: 8px;
+      }
 
-        .mov-table tfoot tr:last-child td:first-child,
-        .mov-table tfoot tr:last-child td:last-child {
-            background: rgba(138, 168, 153, 0.25);
-            color: #1C3B2A;
-        }
+      .mov-table thead tr:first-child th:last-child {
+        border-top-right-radius: 8px;
+      }
 
-        .mov-table tfoot tr:last-child td:first-child {
-            border-bottom-left-radius: 8px;
-        }
+      .mov-table tfoot tr:last-child td:first-child,
+      .mov-table tfoot tr:last-child td:last-child {
+        background: rgba(170, 232, 191);
+        color: #30713e;
+      }
 
-        .mov-table tfoot tr:last-child td:last-child {
-            border-bottom-right-radius: 8px;
-        }
+      .mov-table tfoot tr:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+      }
 
-        .footer {
-            font-size: 12px;
-            color: #444;
-            margin-top: 18px;
-            padding-top: 12px;
-            display: flex;
-            align-items: flex-start;
-            background-image: repeating-linear-gradient(to right, #1C3B2A, #1C3B2A 10px, transparent 10px, transparent 15px);
-            background-repeat: repeat-x;
-            background-size: auto 1px;
-            background-position: top;
-        }
+      .mov-table tfoot tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+      }
 
-        .footer img {
-            height: 100px;
-            color: #1C3B2A;
-        }
+      .footer {
+        font-size: 12px;
+        color: #444;
+        padding-top: 12px;
+        display: flex;
+        align-items: flex-start;
+        background-image: repeating-linear-gradient(
+          to right,
+          #30713e,
+          #30713e 10px,
+          transparent 10px,
+          transparent 15px
+        );
+        background-repeat: repeat-x;
+        background-size: auto 1px;
+        background-position: top;
+      }
 
-        .footer-details {
-            flex: 1;
-        }
+      .footer img {
+        height: 100px;
+        color: #30713e;
+      }
 
-        .logo-space {
-            border: transparent !important;
-        }
+      .footer-details {
+        flex: 1;
+      }
 
-        .banorte-ticket {
-            border: 1px solid #1C3B2A;
-            border-radius: 6px;
-            padding: 8px;
-            font-size: 15px;
-            color: #222;
-            background: #fff;
-            width: 100%;
-            margin: 20px auto;
-        }
+      .logo-space {
+        border: transparent !important;
+      }
 
-        .banorte-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 6px;
-        }
+      .banorte-ticket {
+        border: 3px solid #30713e;
+        border-radius: 6px;
+        padding: 8px;
+        font-size: 15px;
+        color: #222;
+        background: #fff;
+        width: 100%;
+        margin: 20px auto;
+      }
 
-        .banorte-table td {
-            border: 1px solid #bbb;
-            padding: 6px 8px;
-            vertical-align: middle;
-        }
+      .desglose-table {
+        width: 100%;
+        border-collapse: separate;
+        margin-bottom: 6px;
+        border: 1px solid #004d25;
+        border-radius: 8px;
+        border-spacing: 0;
+        margin-top: 20px;
+      }
 
-        .asociacion {
-            text-align: left;
-            font-size: 13px;
-            color: #1C3B2A;
-            padding-left: 8px;
-        }
+      .desglose-table tr td {
+        border: 1px solid #bbb;
+        vertical-align: middle;
+        text-align: center;
+        padding: 8px;
+      }
 
-        .ref-title {
-            background: #8aa89955;
-            padding: 4px;
-            text-align: center;
-            border: 1px solid #bbb;
-            border-bottom: none;
-            font-weight: bold;
-            color: #1C3B2A;
-        }
+      .desglose-table td.header-top {
+        border: 1px solid #004d25;
+        padding: 6px 8px;
+        color: #30713e;
+        font-weight: bold;
+        background: rgba(170, 232, 191);
+        vertical-align: middle;
+        font-size: 10px;
+      }
 
-        .nota {
-            font-size: 12px;
-            margin-top: 6px;
-            color: #444;
-        }
+      .banorte-table {
+        width: 100%;
+        border-collapse: separate;
+        margin-bottom: 6px;
+      }
+
+      .cell-recibo {
+        border: 2px solid #004d25;
+        text-align: center;
+        font-size: 12px;
+        color: #30713e;
+        display: flex;
+        border-radius: 8px;
+      }
+
+      .cell-recibo-conjunto {
+        background: #b2c8b7;
+        padding: 10px;
+        font-weight: bold;
+        border-right: 2px solid #004d25;
+        width: 100px;
+        text-align: center;
+        border-radius: 8px;
+      }
+
+      .asociacion {
+        text-align: left;
+        font-size: 13px;
+        color: #30713e;
+        padding-left: 8px;
+      }
+
+      .ref-title {
+        background: #b2c8b7;
+        padding: 4px;
+        text-align: center;
+        border: 1px solid #bbb;
+        border-bottom: none;
+        font-weight: bold;
+        color: #30713e;
+      }
+
+      .nota {
+        font-size: 12px;
+        margin-top: 6px;
+        color: #444;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-
       <div class="pdf-page">
         <!-- HEADER -->
         <div class="header">
-            <div class="header-title">
-                <img src="{logoPath}" alt="Logo Superior">
-                ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.
-            </div>
+          <div class="header-title">
+            <img src="logo.png" alt="Logo Superior" />
+            ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.
+          </div>
         </div>
-        <table width="100%" cellspacing="0" cellpadding="4" style="font-size:12px;">
-            <tr>
-                <td class="header-contact2" style="width:50%;">
-                    Oficina Montemorelos<br>
-                    Antigua Carretera Nacional No.200<br>
-                    Fracc. Country Hill, Montemoremlos, N.L.<br>
-                    Tel. 826 269-8520<br>
-                </td>
-                <td class="header-contact1" style="width:50%;">
-                    Oficina Monterrey<br>
-                    Tel. 81 8401-9700
-                </td>
-            </tr>
+        <table
+          width="100%"
+          cellspacing="0"
+          cellpadding="4"
+          style="font-size: 10px"
+        >
+          <tr>
+            <td class="header-contact2" style="width: 50%">
+              Oficina Montemorelos<br />
+              Antigua Carretera Nacional No.200<br />
+              Fracc. Country Hill, Montemoremlos, N.L.<br />
+              Tel. 826 269-8520<br />
+            </td>
+            <td class="header-contact1" style="width: 50%">
+              Oficina Monterrey<br />
+              Tel. 81 8401-9700
+            </td>
+          </tr>
         </table>
-        <div class="section-title">ESTADO DE CUENTA</div>
+        <div class="section-title" style="font-weight: 900">
+          ESTADO DE CUENTA
+        </div>
         <!-- DATOS DEL CLIENTE -->
-        <table class="info-table" style="border-collapse: separate; border-spacing: 10px; width:100%;">
-            <tr>
-                <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
-                    <div class="cell-header">NOMBRE DEL PROPIETARIO Y DIRECCIÓN DE ENVÍO</div>
-                    <div style="padding:10px; min-height:60px;">
-                        {memberName}<br>
-                        {sentAddress}
-                    </div>
-                </td>
-                <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
-                    <div class="cell-header">CONTRATO</div>
-                    <div style="padding:10px; min-height:28px; text-align: center;">
-                        {memberId}
-                    </div>
-                    <div class="cell-header">FECHA DE EMISIÓN DE ESTADO DE CUENTA</div>
-                    <div style="padding:10px; min-height:28px;">
-                        {requestedDate}
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
-                    <div class="cell-header">DIRECCIÓN DEL LOTE(S) DE TERRENO</div>
-                    <div style="padding:10px; min-height:40px;">
-                        {terrainAddress}
-                    </div>
-                </td>
-                <td style="border:1px solid #bbb; border-radius:6px; padding:0; vertical-align:top;">
-                    <div class="cell-header">FECHA LÍMITE DE PAGO PARA EVITAR INTERESES MORATORIOS</div>
-                    <div style="padding:10px; min-height:40px;">
-                        {paymentLimitDate}
-                    </div>
-                </td>
-            </tr>
+        <table
+          class="info-table"
+          style="border-collapse: separate; border-spacing: 10px; width: 100%"
+        >
+          <tr>
+            <td class="top-table" style="width: 60%">
+              <div class="cell-header">
+                NOMBRE DEL PROPIETARIO Y DIRECCIÓN DE ENVÍO
+              </div>
+              <div style="padding: 10px; min-height: auto">
+                {memberName}<br />
+                {sentAddress}
+              </div>
+            </td>
+            <td class="top-table">
+              <div class="cell-header">CONTRATO</div>
+              <div style="padding: 10px; min-height: auto; text-align: center">
+                {memberId}
+              </div>
+              <div class="cell-header">
+                FECHA DE EMISIÓN DE ESTADO DE CUENTA
+              </div>
+              <div style="padding: 10px; min-height: auto">{requestedDate}</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="top-table">
+              <div class="cell-header">DIRECCIÓN DEL LOTE(S) DE TERRENO</div>
+              <div style="padding: 10px; min-height: auto">
+                {terrainAddress}
+              </div>
+            </td>
+            <td class="top-table">
+              <div class="cell-header">
+                FECHA LÍMITE DE PAGO PARA EVITAR INTERESES MORATORIOS
+              </div>
+              <div style="padding: 10px; min-height: auto">
+                {paymentLimitDate}
+              </div>
+            </td>
+          </tr>
         </table>
         <!-- TABLA DE MOVIMIENTOS -->
         <table class="mov-table">
-            <thead>
-                <tr>
-                    <th>FECHA</th>
-                    <th>CONCEPTO</th>
-                    <th>CARGO / CRÉDITO</th>
-                </tr>
-            </thead>
-            <tbody>
-                {movements}
-            </tbody>
-            <tfoot>
+          <thead>
+            <tr>
+              <th>FECHA</th>
+              <th>CONCEPTO</th>
+              <th>CARGO / CRÉDITO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {movements}
+          </tbody>
+          <!-- <tfoot>
                 <tr>
                     <td colspan="2" style="text-align:right;">SALDO TOTAL ADEUDADO</td>
                     <td>{totalAmount}</td>
                 </tr>
-            </tfoot>
+            </tfoot> -->
         </table>
+
         <!-- Sección Recibo de Agua -->
-    <!-- Tabla del recibo de agua también redondeada -->
-      <table class="banorte-table" style="width: 100%; border: 2px solid #004d25; border-radius: 8px; border-collapse: separate; border-spacing: 0; margin-top: 20px;">
+        <!-- Tabla del recibo de agua también redondeada -->
+        <div style="display: flex; justify-content: center; gap: 20px">
+          <table class="desglose-table">
+            <tr>
+              <td colspan="4" class="header-top">
+                <div>
+                  <strong>Información del consumo</strong>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="header-top">Medidor</td>
+              <td class="header-top">Lectura Anterior</td>
+              <td class="header-top">Última Lectura</td>
+              <td class="header-top">Consumo</td>
+            </tr>
+            <tr>
+              <td>{medidor}</td>
+              <td>{lecturaAnterior}</td>
+              <td>{lecturaActual}</td>
+              <td>{totalConsumo}</td>
+            </tr>
+          </table>
+
+          <table class="desglose-table">
+            <tr>
+              <td colspan="4" class="header-top">
+                <div>
+                  <strong>Adeudos Pendientes</strong>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="header-top">Clave del fraccionamiento</td>
+              <td class="header-top">Fecha de Vencimiento</td>
+              <td class="header-top">Importe</td>
+            </tr>
+            <tr>
+              <td>{fraccionamiento}</td>
+              <td>{fechaVencimiento}</td>
+              <td>{importe}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="font-size: 10px">
+          Favor de hacer su pago en nuestras oficinas o en cualquier sucursal
+          del banco <b>BANORTE</b> utilizando la ficha anexa.<br />
+          También podrá efectuar su pago con <b>Tarjeta de Crédito</b> en forma
+          automática o
+          <b
+            >transferencia electrónica (clabe 072 580 010664365030 de BANORTE
+            cuenta 1066436503).</b
+          ><br />
+          También podrá efectuar su pago en
+          <b>Seven Eleven, Farmacias del Ahorro y Farmacias Guadalajara</b>
+          indicando que es un pago de servicio de BANORTE con el número de
+          <b><u>emisora 148374</u></b> y proporcionar el No. de Contrato y
+          Nombre.<br />
+          Si pasados 30 días de la fecha de corte no recibimos observación
+          alguna, su saldo se considera correcto.<br />
+          <em>(Para cualquier duda, llame a nuestras oficinas).</em>
+        </div>
+        <div style="text-align: right">
+          <strong><br />PROPIETARIO</strong>
+        </div>
+      </div>
+
+      <!-- FOOTER / REFERENCIA DE PAGO -->
+      <div class="footer">
+        <div class="banorte-ticket">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+            "
+          >
+            <!-- Tabla con logo y asociación -->
+            <table style="width: 30%; text-align: center">
+              <tr>
+                <td style="padding: 0">
+                  <div>
+                    <strong
+                      >ASOCIACIÓN DE COLONOS <br />
+                      DE COUNTRY HILL A.C.</strong
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="logo.png" alt="Logo Inferior" /></td>
+              </tr>
+            </table>
+
+            <!-- Tabla con info de pago -->
+            <table
+              class="banorte-table"
+              style="
+                border-collapse: separate;
+
+                width: 100%;
+                float: right;
+              "
+            >
+              <tr>
+                <!-- Celda combinada para Fecha y fechaDePago -->
+                <td colspan="4" style="padding: 0">
+                  <div class="cell-recibo">
+                    <div class="cell-recibo-conjunto">FECHA</div>
+                    <div style="padding: 10px; flex: 1; text-align: center">
+                      {fechaDePago}
+                    </div>
+                  </div>
+                </td>
+                <!-- Logo Banorte separado -->
+                <td style="text-align: center">
+                  <img src="logo_banorte.svg" style="height: 30px" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" style="padding: 0">
+                  <div class="cell-recibo" style="display: block">
+                    <div
+                      class="cell-recibo-conjunto"
+                      style="width: auto; font-size: 14px"
+                    >
+                      No. DE EMPRESA <strong>02284</strong>
+                    </div>
+                  </div>
+                </td>
+                <td colspan="4" style="padding: 0">
+                  <div class="cell-recibo">
+                    <div class="cell-recibo-conjunto">TOTAL A PAGAR</div>
+                    <div style="padding: 10px; flex: 1; text-align: center">
+                      $ {totalAmount}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- REFERENCIAS -->
+              <tr>
+                <td
+                  colspan="6"
+                  class="cell-recibo-conjunto"
+                  style="font-size: 14px; color: #30713e"
+                >
+                  REFERENCIAS
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="font-size: 11px">
+                  <strong>No. DE CONTRATO</strong>
+                </td>
+                <td colspan="4" style="font-size: 11px">
+                  <strong>NOMBRE DEL CLIENTE</strong>
+                </td>
+              </tr>
+              <tr style="text-align: center">
+                <td colspan="3">{memberId}</td>
+                <td colspan="3">{memberName}</td>
+              </tr>
+              <tr>
+                <td colspan="6" style="font-size: 12px">
+                  <p class="nota">
+                    Este pago no es válido sin la inserción de la máquina
+                    certificadora, sello y firma del cajero, los documentos se
+                    reciben salvo buen cobro.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contenedor con doble borde -->
+    <div style="text-align: right; border-bottom: 2px solid #30713e">
+      <strong><br />BANCO</strong>
+    </div>
+    <div style="border: 3px solid #004d25; padding: 6px; margin-top: 950px">
+      <table
+        class="banorte-table"
+        style="
+          width: 100%;
+          border: 2px solid #004d25;
+          border-collapse: collapse;
+        "
+      >
         <tr>
-          <td colspan="2" class="ref-title" style="text-align: center; padding: 8px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <strong class="section-title">DETALLE DEL CONSUMO DE AGUA - Contrato {memberId}</strong>
+          <td
+            colspan="2"
+            class="ref-title"
+            style="text-align: center; background: #f2f2f2; padding: 8px"
+          >
+            <strong class="section-title">INSTRUCTIVO PARA PAGOS</strong>
           </td>
         </tr>
         <tr>
-          <td style="padding: 10px; font-size: 14px;">Fecha a facturar:</td>
-          <td style="padding: 10px; font-size: 14px;">{FechaPeriodoAgua}</td>
+          <td colspan="2" style="padding: 10px; font-size: 14px">
+            Estimado cliente los depósitos serán a nombre de:
+            <strong>ASOCIACIÓN DE COLONOS DE COUNTRY HILL A.C.</strong><br />
+            A continuación le sugerimos las diversas formas de realizar sus
+            pagos:
+          </td>
         </tr>
         <tr>
-          <td style="padding: 10px; font-size: 14px;">Medidor:</td>
-          <td style="padding: 10px; font-size: 14px;"><strong>{Medidor}</strong></td>
+          <td
+            colspan="2"
+            style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc"
+          >
+            <strong>1.</strong> Puede pagar en el Banco Banorte usando la ficha
+            de depósito que se encuentra en la parte superior.
+          </td>
         </tr>
         <tr>
-          <td style="padding: 10px; font-size: 14px;">Lectura anterior:</td>
-          <td style="padding: 10px; font-size: 14px;">{LecturaAnterior} m³</td>
+          <td
+            colspan="2"
+            style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc"
+          >
+            <strong>2.</strong> Transferencia Electrónica - Indicando las
+            referencias:<br />
+            N° de Contrato <b>{memberId}</b> y Nombre <b>{memberName}</b><br />
+            <strong>Banco Banorte Clabe:</strong> 072 580 01066436 5030
+          </td>
         </tr>
         <tr>
-          <td style="padding: 10px; font-size: 14px;">Lectura actual:</td>
-          <td style="padding: 10px; font-size: 14px;">{LecturaActual} m³</td>
+          <td
+            colspan="2"
+            style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc"
+          >
+            <strong>3.</strong> Depositando en el Banco Banorte Emisora #148374
+            en la cuenta <strong>N°1066436503</strong> y enviando su ficha de
+            depósito al fax: (81) 8346-1532 o escaneando su comprobante y
+            enviándolo vía e-mail: cobranza@losandesgpo.com o al (81) 1808-7149
+            Whatsapp.
+          </td>
         </tr>
         <tr>
-          <td style="padding: 10px; font-size: 14px;">Consumo del periodo:</td>
-          <td style="padding: 10px; font-size: 14px;"><strong>{Consumo} m³</strong></td>
+          <td
+            colspan="2"
+            style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc"
+          >
+            <strong>4.</strong> Transferencia Internacional por medio del
+            <strong>Banco Banorte</strong><br />
+            <strong>SWIFT CODE:</strong> MENOMXMT <br />
+            <strong>BENEFICIARIO:</strong> ASOCIACIÓN DE COLONOS DE COUNTRY HILL
+            A.C.<br />
+            <strong>CUENTA N°:</strong> 1066436503
+          </td>
         </tr>
         <tr>
-          <td style="padding: 10px; font-size: 14px;">Monto a pagar:</td>
-          <td style="padding: 10px; font-size: 14px;"><strong>${MontoAgua}</strong></td>
+          <td
+            colspan="2"
+            style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc"
+          >
+            <strong>5.</strong> En nuestras oficinas pagando con Tarjeta de
+            Crédito, Débito o Efectivo ubicadas en: Antigua Carretera Nacional
+            #200 Fracc. Country Hill, Montemorelos, N.L.<br />
+            Tel: (826) 269-8520 OF. Mty: Tel. (81) 8401-9700
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center; padding: 15px">
+            <img
+              src="logo.png"
+              alt="Logo Country Hill"
+              style="width: 90px"
+            /><br />
+            <strong>ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.</strong>
+          </td>
+        </tr>
       </table>
-        <div style="font-size: 16px;">
-            Favor de hacer su pago en nuestras oficinas o en cualquier sucursal del banco <b>BANORTE</b> utilizando la
-            ficha anexa.<br>
-            También podrá efectuar su pago con <b>Tarjeta de Crédito</b> en forma automática o <b>transferencia
-                electrónica
-            (clabe 072 580 010664365030 de BANORTE cuenta 1066436503).</b><br>
-            También podrá efectuar su pago en <b>Seven Eleven, Farmacias del Ahorro y Farmacias Guadalajara</b>
-            indicando que es un pago de servicio de BANORTE
-            con el número de <b><u>emisora 148374</u></b> y proporcionar el No. de Contrato y Nombre.<br>
-            Si pasados 30 días de la fecha de corte no recibimos observación alguna, su saldo se considera correcto.<br>
-            <em>(Para cualquier duda, llame a nuestras oficinas).</em>
-        </div>
-        <div style="text-align: right;">
-            <strong><br>PROPIETARIO</strong>
-        </div>
-      </div>
-        
-        <!-- FOOTER / REFERENCIA DE PAGO -->
-        <div class="footer">
-            <div class="banorte-ticket">
-                <table class="banorte-table">
-                    <tr>
-                        <td colspan="4" class="asociacion logo-space">
-                            <strong>ASOCIACIÓN DE COLONOS DE COUNTRY HILL A.C.</strong>
-                        </td>
-                        <td class="ref-title"><strong>FECHA</strong></td>
-                        <td colspan="3">{requestedDate}</td>
-                        <td rowspan="2" class="logo-space" style="vertical-align: top;">
-                            <img style="height: 20px !important;" src="{logoBanortePath}" alt="Logo Banorte">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="spacer logo-space"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="logo-space">
-                            <img src="{logoPath}" alt="Logo Inferior">
-                        </td>
-                        <td class="ref-title"><strong>No. DE EMPRESA (EMISORA)</strong></td>
-                        <td><strong>1488374</strong></td>
-                        <td class="ref-title"><strong>TOTAL A PAGAR</strong></td>
-                        <td colspan="2">{totalAmount}</td>
-                    </tr>
-                </table>
-                <div class="ref-title"><strong>REFERENCIAS</strong></div>
-                <table class="banorte-table">
-                    <tr class="ref-title">
-                        <td><strong>No. DE CONTRATO</strong></td>
-                        <td><strong>NOMBRE DEL CLIENTE</strong></td>
-                    </tr>
-                    <tr>
-                        <td>{memberId}</td>
-                        <td>{memberName}</td>
-                    </tr>
-                </table>
-                <p class="nota">
-                    Los documentos se reciben salvo buen cobro. También podrá efectuar su pago en Seven Eleven,
-                    Farmacias del Ahorro y Farmacias Guadalajara.
-                </p>
-            </div>
-        </div>
     </div>
-    <!-- Contenedor con doble borde -->
-        <div style="text-align: right; border-bottom: 2px solid #1C3B2A;">
-            <strong><br>BANCO</strong>
-        </div>
-        <div style="border: 3px solid #004d25; padding: 6px; margin-top: 950px;">
-            <table class="banorte-table" style="width: 100%; border: 2px solid #004d25; border-collapse: collapse;">
-                <tr>
-                    <td colspan="2" class="ref-title" style="text-align: center; background: #f2f2f2; padding: 8px;">
-                        <strong class="section-title">INSTRUCTIVO PARA PAGOS</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding: 10px; font-size: 14px;">
-                        Estimado cliente los depósitos serán a nombre de:
-                        <strong>ASOCIACIÓN DE COLONOS DE COUNTRY HILL A.C.</strong><br/>
-                        A continuación le sugerimos las diversas formas de realizar sus pagos:
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc;">
-                        <strong>1.</strong> Puede pagar en el Banco Banorte usando la ficha de depósito que se encuentra
-                        en la parte superior.
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc;">
-                        <strong>2.</strong> Transferencia Electrónica - Indicando las referencias:<br />
-                        N° de Contrato <b>{memberId}</b> y Nombre <b>{memberName}</b><br />
-                        <strong>Banco Banorte Clabe:</strong> 072 580 01066436 5030
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc;">
-                        <strong>3.</strong> Depositando en el Banco Banorte Emisora #148374 en la cuenta
-                        <strong>N°1066436503</strong> y enviando su ficha de depósito al fax:
-                        (81) 8346-1532 o escaneando su comprobante y enviándolo vía
-                        e-mail: cobranza@losandesgpo.com o al (81) 1808-7149 Whatsapp.
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc;">
-                        <strong>4.</strong> Transferencia Internacional por medio del
-                        <strong>Banco Banorte</strong><br />
-                        <strong>SWIFT CODE:</strong> MENOMXMT <br />
-                        <strong>BENEFICIARIO:</strong> ASOCIACIÓN DE COLONOS DE COUNTRY HILL A.C.<br />
-                        <strong>CUENTA N°:</strong> 1066436503
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding: 10px; font-size: 14px; border-top: 1px solid #ccc;">
-                        <strong>5.</strong> En nuestras oficinas pagando con Tarjeta de Crédito, Débito o Efectivo
-                        ubicadas en:
-                        Antigua Carretera Nacional #200 Fracc. Country Hill, Montemorelos, N.L.<br />
-                        Tel: (826) 269-8520 OF. Mty: Tel. (81) 8401-9700
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center; padding: 15px;">
-                        <img src="{logoPath}" alt="Logo Country Hill" style="width: 90px;" /><br />
-                        <strong>ASOCIACIÓN DE COLONOS DE COUNTRY HILL, A.C.</strong>
-                    </td>
-                </tr>
-            </table>
-        </div>
-</body>
-
+  </body>
 </html>
